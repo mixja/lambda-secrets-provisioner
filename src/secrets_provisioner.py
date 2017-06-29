@@ -9,7 +9,7 @@ from cfn_lambda_handler import Handler
 from voluptuous import Required, All, Schema, Invalid, MultipleInvalid
 
 LENGTH = 13
-CHARS = string.ascii_letters + string.digits + '!@#$%^&*()'
+CHARS = string.ascii_letters + string.digits + '!#$%^&*()'
 
 # Configure logging
 logging.basicConfig()
@@ -65,6 +65,7 @@ def handle_create(event, context):
     KeyId=secret['KmsKeyId'],
     Overwrite=True
   )
+  event['PhysicalResourceId'] = event['LogicalResourceId']
   event['Data'] = {
     'Value': secret['Value'],
     'Version': secret['Version']
