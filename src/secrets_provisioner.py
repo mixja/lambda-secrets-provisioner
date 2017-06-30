@@ -3,7 +3,7 @@ parent_dir = os.path.abspath(os.path.dirname(__file__))
 vendor_dir = os.path.join(parent_dir, 'vendor')
 sys.path.append(vendor_dir)
 
-import logging, datetime, json, random, string, base64, hashlib
+import logging, datetime, json, random, string, base64
 import boto3
 from cfn_lambda_handler import Handler
 from voluptuous import Required, All, Schema, Invalid, MultipleInvalid
@@ -31,7 +31,7 @@ def get_validator():
     Required('Name'): All(basestring),
     Required('Key'): All(basestring),
     Required('Value', default=None): All(basestring),
-    Required('Version', default=datetime.datetime.now().strftime('%Y-%m-%d')): All(basestring),
+    Required('Version', default=datetime.datetime.now().isoformat()): All(basestring),
     Required('KmsKeyId'): All(basestring)
   }, extra=True)
 
