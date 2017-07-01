@@ -9,7 +9,7 @@ from cfn_lambda_handler import Handler
 from voluptuous import Required, All, Schema, Invalid, MultipleInvalid
 
 LENGTH = 13
-CHARS = string.ascii_letters + string.digits + '!#$%^&*()'
+CHARS = string.ascii_letters + string.digits + '!#$%^*()'
 
 # Configure logging
 logging.basicConfig()
